@@ -1,6 +1,11 @@
 import React, { useState } from "react";
-import icon from "./clear.gif";
+import clearIcon from "../icons/clear.gif";
+import rainIcon from "../icons/rain.gif";
+import snowIcon from "../icons/snow.gif";
+import hazeIcon from "../icons/haze.gif";
+import cloudIcon from "../icons/cloud.gif";
 import { useQuery } from "react-query";
+import { useSpring, animated } from "react-spring";
 
 const API_KEY = "ecfe46ecfbe0861e24ecda0e217e2e8e";
 
@@ -37,6 +42,35 @@ const Weather = () => {
 
   const handleUserInput = (event) => {
     setCity(event.target.value);
+  };
+
+  //animations
+  const contentProps = useSpring({
+    from: { scale: 1 },
+    to: { scale: data ? 1.1 : 1 },
+    config: { duration: 1000 },
+  });
+
+  const handleIcon = (weather) => {
+    switch (weather) {
+      case "Clear":
+        return clearIcon;
+
+      case "Rain":
+        return rainIcon;
+
+      case "Snow":
+        return snowIcon;
+
+      case "Clouds":
+        return cloudIcon;
+
+      case "Haze":
+        return hazeIcon;
+
+      default:
+        return "";
+    }
   };
 
   return (
@@ -85,13 +119,17 @@ const Weather = () => {
           </svg>
         </button>
       </form>
-      {}
-      {isLoading && <p className="text-red-500">Loading...</p>}
+      {isLoading && <p className="text-black">Loading...</p>}
       {isError && <p className="text-red-500">Location unavailable</p>}
       {data && (
-        <div className="">
-          <img className="w-32 h-w-32 mx-auto" src={icon} alt="My GIF Image" />
-          <div className="flex flex-col">
+        <div className="h-auto">
+          <img
+            type="image"
+            alt="weather icon"
+            className="w-32 h-w-32 mx-auto mt-2"
+            src={handleIcon(data.weather[0].main)}
+          />
+          <animated.div style={contentProps} className="flex flex-col">
             <h className="text-mainColor text-3xl font-bold">
               {data.main.temp}
               <span className="text-base text-start align-top">°C</span>
@@ -156,7 +194,7 @@ const Weather = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </animated.div>
         </div>
       )}
     </div>
