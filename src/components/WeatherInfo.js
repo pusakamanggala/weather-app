@@ -135,7 +135,7 @@ const Weather = () => {
           />
           <animated.div style={contentProps} className="flex flex-col">
             <h className="text-mainColor text-3xl font-bold">
-              {data.main.temp}
+              {Math.round(data.main.temp)}
               <span className="text-base text-start align-top">°C</span>
             </h>
             <h className="text-mainColor capitalize font-semibold my-5">
