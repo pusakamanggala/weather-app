@@ -145,11 +145,11 @@ const Weather = () => {
               <div className="flex items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="icon icon-tabler icon-tabler-ripple"
+                  className="icon icon-tabler icon-tabler-ripple animate-pulse"
                   width="40"
                   height="40"
                   viewBox="0 0 24 24"
-                  stroke-width="1.5"
+                  stroke-width="2"
                   stroke="#2c3e50"
                   fill="none"
                   stroke-linecap="round"
@@ -181,6 +181,7 @@ const Weather = () => {
                   fill="none"
                   stroke-linecap="round"
                   stroke-linejoin="round"
+                  style={{ animation: "spin 3s linear infinite" }}
                 >
                   <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                   <path d="M12 12c2.76 0 5 -2.01 5 -4.5s-2.24 -4.5 -5 -4.5v9z" />
