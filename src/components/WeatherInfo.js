@@ -5,36 +5,12 @@ import snowIcon from "../icons/snow.gif";
 import hazeIcon from "../icons/haze.gif";
 import cloudIcon from "../icons/cloud.gif";
 import mistIcon from "../icons/mist.gif";
-import { useQuery } from "react-query";
 import { useSpring, animated } from "react-spring";
-
-const API_KEY = "ecfe46ecfbe0861e24ecda0e217e2e8e";
+import { useWeather } from "../hooks/useWeather";
 
 const Weather = () => {
   const [city, setCity] = useState("");
-  const [isError, setIsError] = useState(false);
-
-  const { data, isLoading, refetch } = useQuery(
-    ["weather", city],
-    async () => {
-      const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`
-      );
-      if (!response.ok) {
-        throw new Error("Unable to fetch data.");
-      }
-      const data = await response.json();
-      setIsError(false);
-      return data;
-    },
-    {
-      enabled: false,
-      retry: 1,
-      onError: () => {
-        setIsError(true);
-      },
-    }
-  );
+  const { data, isLoading, refetch, isError } = useWeather(city);
 
   const getWeather = (e) => {
     e.preventDefault();
@@ -82,15 +58,15 @@ const Weather = () => {
       <form onSubmit={getWeather} className="w-72 flex justify-between">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="icon icon-tabler icon-tabler-map-pin"
+          className="icon icon-tabler icon-tabler-map-pin"
           width="30"
           height="30"
           viewBox="0 0 24 24"
-          stroke-width="1.5"
+          strokeWidth="1.5"
           stroke="#2c3e50"
           fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         >
           <path stroke="none" d="M0 0h24v24H0z" fill="none" />
           <circle cx="12" cy="11" r="3" />
@@ -107,15 +83,15 @@ const Weather = () => {
         <button type="submit">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="icon icon-tabler icon-tabler-search"
+            className="icon icon-tabler icon-tabler-search"
             width="25"
             height="25"
             viewBox="0 0 24 24"
-            stroke-width="1.5"
+            strokeWidth="1.5"
             stroke="#2c3e50"
             fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <circle cx="10" cy="10" r="7" />
@@ -134,13 +110,13 @@ const Weather = () => {
             src={handleIcon(data.weather[0].main)}
           />
           <animated.div style={contentProps} className="flex flex-col">
-            <h className="text-mainColor text-3xl font-bold">
+            <h1 className="text-mainColor text-3xl font-bold">
               {Math.round(data.main.temp)}
               <span className="text-base text-start align-top">°C</span>
-            </h>
-            <h className="text-mainColor capitalize font-semibold my-5">
+            </h1>
+            <h1 className="text-mainColor capitalize font-semibold my-5">
               {data.weather[0].description}
-            </h>
+            </h1>
             <div className="flex justify-between mt-14 px-6 ">
               <div className="flex items-center">
                 <svg
@@ -149,11 +125,11 @@ const Weather = () => {
                   width="40"
                   height="40"
                   viewBox="0 0 24 24"
-                  stroke-width="2"
+                  strokeWidth="2"
                   stroke="#2c3e50"
                   fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 >
                   <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                   <path d="M3 7c3 -2 6 -2 9 0s6 2 9 0" />
@@ -172,15 +148,15 @@ const Weather = () => {
               <div className="flex">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="icon icon-tabler icon-tabler-windmill"
+                  className="icon icon-tabler icon-tabler-windmill"
                   width="40"
                   height="40"
                   viewBox="0 0 24 24"
-                  stroke-width="1.5"
+                  strokeWidth="1.5"
                   stroke="#2c3e50"
                   fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   style={{ animation: "spin 3s linear infinite" }}
                 >
                   <path stroke="none" d="M0 0h24v24H0z" fill="none" />

@@ -3,8 +3,7 @@ import { useQuery } from "react-query";
 
 const API_KEY = "ecfe46ecfbe0861e24ecda0e217e2e8e";
 
-const useWeather = () => {
-  const [city, setCity] = useState("");
+export function useWeather(city) {
   const [isError, setIsError] = useState(false);
 
   const { data, isLoading, refetch } = useQuery(
@@ -22,18 +21,17 @@ const useWeather = () => {
     },
     {
       enabled: false,
+      retry: 1,
       onError: () => {
         setIsError(true);
       },
     }
   );
 
-  const getWeather = (city) => {
-    setCity(city);
-    refetch();
+  return {
+    data,
+    isLoading,
+    refetch,
+    isError,
   };
-
-  return { data, isLoading, isError, getWeather };
-};
-
-export default useWeather;
+}
