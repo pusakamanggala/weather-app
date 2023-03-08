@@ -4,6 +4,7 @@ import rainIcon from "../icons/rain.gif";
 import snowIcon from "../icons/snow.gif";
 import hazeIcon from "../icons/haze.gif";
 import cloudIcon from "../icons/cloud.gif";
+import mistIcon from "../icons/mist.gif";
 import { useQuery } from "react-query";
 import { useSpring, animated } from "react-spring";
 
@@ -67,6 +68,9 @@ const Weather = () => {
 
       case "Haze":
         return hazeIcon;
+
+      case "Mist":
+        return mistIcon;
 
       default:
         return "";
