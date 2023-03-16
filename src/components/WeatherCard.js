@@ -1,12 +1,15 @@
 import React, { useState } from "react";
-import clearIcon from "../icons/clear.gif";
-import rainIcon from "../icons/rain.gif";
-import snowIcon from "../icons/snow.gif";
-import hazeIcon from "../icons/haze.gif";
-import cloudIcon from "../icons/cloud.gif";
-import mistIcon from "../icons/mist.gif";
+import clearIcon from "../icons/clearDay.json";
+import rainIcon from "../icons/rainDay.json";
+import snowIcon from "../icons/snowDay.json";
+import hazeIcon from "../icons/hazeDay.json";
+import cloudIcon from "../icons/cloudDay.json";
+import mistIcon from "../icons/mist.json";
+import clearNight from "../icons/clearNight.json";
 import { useSpring, animated } from "react-spring";
 import { useWeather } from "../hooks/useWeather";
+
+import Lottie from "lottie-react";
 
 const Weather = () => {
   const [city, setCity] = useState("");
@@ -115,11 +118,9 @@ const Weather = () => {
       {isError && <p className="text-red-500">Location unavailable</p>}
       {data && (
         <div className="h-auto">
-          <img
-            type="image"
-            alt="weather icon"
+          <Lottie
             className="w-32 h-w-32 mx-auto mt-2"
-            src={handleIcon(data.weather[0].main)}
+            animationData={handleIcon(data.weather[0].main)}
           />
           <animated.div style={contentProps} className="flex flex-col">
             <h1 className="text-mainColor text-3xl font-bold">
