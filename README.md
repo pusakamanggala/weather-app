@@ -1,6 +1,6 @@
 # Weather APP
 
-This is a web application that displays weather information for a given location. The app is built using ReactJS, TailwindCSS, React Spring, React Query, and Lottie. The weather information is sourced from OpenWeatherMap's API, and the animated icon is from Jochang on lottiefiles.com .
+This is a web application that displays weather information for a given location. The app is built using ReactJS, TailwindCSS, React Spring, React Query, and Lottie. The weather information is sourced from OpenWeatherMap's API, and the weather animations is from Jochang on lottiefiles.com .
 
 ## Technologies Used
 
@@ -14,7 +14,7 @@ This is a web application that displays weather information for a given location
 
 The weather data is sourced from the [OpenWeatherMap API](https://openweathermap.org/api). Please refer to their documentation for more information on how to use the API.
 
-## Animated Icon
+## Weather Animations
 
 The animated icon used in this application is created by Jochang and can be found on [LottieFiles.com](https://lottiefiles.com/vdr0uy2wwsoljqtc).
 
@@ -31,7 +31,7 @@ To use this application, you will need [Node.js](https://nodejs.org/) installed 
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/weather-app.git
+git clone https://github.com/pusakamanggala/weather-app.git
 cd weather-app
 ```
 
