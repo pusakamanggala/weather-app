@@ -6,6 +6,9 @@ import hazeIcon from "../icons/hazeDay.json";
 import cloudIcon from "../icons/cloudDay.json";
 import mistIcon from "../icons/mist.json";
 import clearNight from "../icons/clearNight.json";
+import rainNight from "../icons/rainNight.json";
+import snowNight from "../icons/snowNight.json";
+import cloudNight from "../icons/cloudNight.json";
 import { useSpring, animated } from "react-spring";
 import { useWeather } from "../hooks/useWeather";
 
@@ -46,19 +49,19 @@ const Weather = () => {
   const handleIcon = (weather) => {
     switch (weather) {
       case "Clear":
-        return clearIcon;
+        return isDaytime(data) ? clearIcon : clearNight;
 
       case "Rain":
-        return rainIcon;
+        return isDaytime(data) ? rainIcon : rainNight;
 
       case "Snow":
-        return snowIcon;
+        return isDaytime(data) ? snowIcon : snowNight;
 
       case "Clouds":
-        return cloudIcon;
+        return isDaytime(data) ? cloudIcon : cloudNight;
 
       case "Haze":
-        return hazeIcon;
+        return isDaytime(data) ? hazeIcon : mistIcon;
 
       case "Mist":
         return mistIcon;
@@ -125,13 +128,12 @@ const Weather = () => {
           <animated.div style={contentProps} className="flex flex-col">
             <h1 className="text-mainColor text-3xl font-bold">
               {Math.round(data.main.temp)}
-              <span className="text-base text-start align-top">°C</span>
+              <span className="text-base text-start align-top absolute">
+                °C
+              </span>
             </h1>
             <h1 className="text-mainColor capitalize font-semibold my-5">
               {data.weather[0].description}
-            </h1>
-            <h1 className="text-black">
-              {isDaytime(data) ? "siang" : "malam"}
             </h1>
             <div className="flex justify-between mt-14 px-6 ">
               <div className="flex items-center">
