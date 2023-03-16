@@ -28,6 +28,18 @@ const Weather = () => {
     config: { duration: 1000 },
   });
 
+  function isDaytime(jsonData) {
+    const dt = jsonData.dt;
+    const sunrise = jsonData.sys.sunrise;
+    const sunset = jsonData.sys.sunset;
+    const currentTimestamp = new Date(dt * 1000);
+    const sunriseTimestamp = new Date(sunrise * 1000);
+    const sunsetTimestamp = new Date(sunset * 1000);
+    return (
+      currentTimestamp > sunriseTimestamp && currentTimestamp < sunsetTimestamp
+    );
+  }
+
   const handleIcon = (weather) => {
     switch (weather) {
       case "Clear":
@@ -148,7 +160,7 @@ const Weather = () => {
               <div className="flex">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="icon icon-tabler icon-tabler-windmill"
+                  className="icon icon-tabler icon-tabler-windmill animate-spin"
                   width="40"
                   height="40"
                   viewBox="0 0 24 24"
