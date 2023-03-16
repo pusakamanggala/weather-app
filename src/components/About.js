@@ -53,7 +53,7 @@ const About = () => {
           target="_blank"
           rel="noreferrer"
         >
-          Repository
+          See the code
         </a>
       </Modal>
     </div>
