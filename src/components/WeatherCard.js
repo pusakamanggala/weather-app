@@ -28,10 +28,10 @@ const Weather = () => {
     config: { duration: 1000 },
   });
 
-  function isDaytime(jsonData) {
-    const dt = jsonData.dt;
-    const sunrise = jsonData.sys.sunrise;
-    const sunset = jsonData.sys.sunset;
+  function isDaytime(data) {
+    const dt = data.dt;
+    const sunrise = data.sys.sunrise;
+    const sunset = data.sys.sunset;
     const currentTimestamp = new Date(dt * 1000);
     const sunriseTimestamp = new Date(sunrise * 1000);
     const sunsetTimestamp = new Date(sunset * 1000);
@@ -128,6 +128,9 @@ const Weather = () => {
             </h1>
             <h1 className="text-mainColor capitalize font-semibold my-5">
               {data.weather[0].description}
+            </h1>
+            <h1 className="text-black">
+              {isDaytime(data) ? "siang" : "malam"}
             </h1>
             <div className="flex justify-between mt-14 px-6 ">
               <div className="flex items-center">
