@@ -98,7 +98,7 @@ const Weather = () => {
           onChange={handleUserInput}
           required
         />
-        <button type="submit" title="search button">
+        <button type="submit" title="Find">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="icon icon-tabler icon-tabler-search"

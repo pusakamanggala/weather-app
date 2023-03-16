@@ -23,7 +23,7 @@ const Modal = ({ isOpen, onClose, children }) => {
           <button
             className="absolute top-0 right-0 m-3"
             onClick={onClose}
-            title="close button"
+            title="Close"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

@@ -14,7 +14,7 @@ const About = () => {
 
   return (
     <div className="absolute bottom-0 right-0 m-5">
-      <button onClick={openModal} title="open modal button">
+      <button onClick={openModal} title="About this app">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
