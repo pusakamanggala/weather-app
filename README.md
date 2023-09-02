@@ -1,5 +1,5 @@
 # Weather APP
-
+![Page Screenshot](public/screenshot/Screenshot.png)
 This is a web application that displays weather information for a given location. The app is built using ReactJS, TailwindCSS, React Spring, React Query, and Lottie. The weather information is sourced from OpenWeatherMap's API, and the weather animations is from Jochang on lottiefiles.com .
 
 ## Technologies Used
