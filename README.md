@@ -18,13 +18,6 @@ The weather data is sourced from the [OpenWeatherMap API](https://openweathermap
 
 The animated icon used in this application is created by Jochang and can be found on [LottieFiles.com](https://lottiefiles.com/vdr0uy2wwsoljqtc).
 
-## Getting Started
-
-To get started with this application, simply clone the repository and install the dependencies using npm or yarn. 
-
-
-git clone https://github.com/yourusername/weather-app.git
-
 ## Installation
 
 To use this application, you will need [Node.js](https://nodejs.org/) installed on your computer.
